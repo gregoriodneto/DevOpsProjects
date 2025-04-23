@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongodb
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - rede-micro
+
+  go-service:
+    build: ./go-service
+    container_name: go-service
+    depends_on:
+      - mongo
+    networks:
+      - rede-micro
+
+  python-service:
+    build: ./python-service
+    container_name: python-service
+    depends_on:
+      - mongo
+    networks:
+      - rede-micro
+
+  gateway:
+    build: ./gateway
+    container_name: gateway
+    ports:
+      - "8000:8000"
+    depends_on:
+      - go-service
+      - python-service
+    networks:
+      - rede-micro
+
+volumes:
+  mongo-data:
+
+networks:
+  rede-micro:
+    driver: bridge

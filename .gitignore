@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.env
+*.sqlite3
+*.db
+*.log
+
+# Go
+bin/
+*.exe
+*.out
+*.test
+
+# Docker
+*.pid
+*.tar
+*.gz
+
+# VSCode
+.vscode/
+
+# Env / Secrets
+.env
+
+# Node (caso inclua algo frontend no futuro)
+node_modules/
+
+# Python virtual env
+venv/
+.env/
+
+# macOS
+.DS_Store
+
+# General
+*.swp
+.idea/
+*.bak
+
+# Logs
+logs/
+*.log
